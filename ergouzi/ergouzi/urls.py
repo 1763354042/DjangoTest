@@ -23,9 +23,12 @@ from django.urls import path,include
 
 from django.conf.urls import url
 from django.contrib import admin
-from blog import views as blog_views            #记住！先导入app中的views后使用
+# from blog import views as blog_views            #记住！先导入app中的views后使用
+app_name = 'blog'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',blog_views.index,name='index'),
-    path('blog/',include('blog.urls'))
+    # url(r'^$',blog_views.index,name='index'),
+    path('blog/',include('blog.urls')),           #include允许引用其他URLconfs
+    # path('JobData/',include('JobData.urls'))               #include允许引用其他URLconfs
+
 ]
