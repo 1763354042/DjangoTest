@@ -29,6 +29,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^$',blog_views.index,name='index'),
     path('blog/',include('blog.urls')),           #include允许引用其他URLconfs
-    # path('JobData/',include('JobData.urls'))               #include允许引用其他URLconfs
+    path('JobData/',include('JobData.urls'))               #include允许引用其他URLconfs
 
 ]
