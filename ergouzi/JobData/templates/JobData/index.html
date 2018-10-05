@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>寻找自己的职业道路</title>
+</head>
+<link rel="stylesheet" href="/stylesheets/index.css" type="text/css"/>
+<body>
+<div id="indexTop">
+  <ul id="indexTopUl">
+    <ol class="indexTopLi">全部导航</ol>
+    <ol class="indexTopLi">搜索查询</ol>
+    <ol class="indexTopLi">热门推荐</ol>
+    <ol class="indexTopLi">社区简报</ol>
+    <ol class="indexTopLi">比赛认证</ol>
+  </ul>
+  <div id="indexTopLogin">
+    <p id="indexTopLoginP">免费注册</p>
+  </div>
+  <p id="indexTopLogo">Data</p>
+  <p id="indexTopTitle">寻找自己的职业道路</p>
+  <ul id="indexTopUl2">
+    <ol class="indexTopOl1" id="indexTopOL1">找岗位</ol>
+    <ol class="indexTopOl1" id="indexTopOL2">找技术</ol>
+    <ol class="indexTopOl1" id="indexTopOL3">找数据</ol>
+  </ul>
+  <div id="indexTopSearch">
+    <input id="indexTopSearchInput"/>
+    <button id="indexTopSearchBtn" value="Data">Data</button>
+  </div>
+</div>
+<div id="indexRecommend">
+  <ul id="indexRecommendUl">
+    <ol id="indexRecommend1" class="indexRecommendLi" >
+      <p class="indexRecommendTitle">大数据开发工程师</p>
+      <hr class="indexRecommendHr">
+      <p class="indexRecommendBody">负责公司业务数据报表设计、开发及日常维护；搭建公司的数据平台，并进行功能维护、性能优化、系统升级</p>
+    </ol>
+    <ol id="indexRecommend2" class="indexRecommendLi">
+      <p class="indexRecommendTitle">产品经理</p>
+      <hr class="indexRecommendHr">
+      <p class="indexRecommendBody">互联网平台及产品在公司内外部的运营及推广工作，具备识别市场需求并针对需求开发产品的能力</p>
+    </ol>
+    <ol id="indexRecommend3" class="indexRecommendLi">
+      <p class="indexRecommendTitle">UI设计</p>
+      <hr class="indexRecommendHr">
+      <p class="indexRecommendBody">协助网站前端美工设计，配合完成网站设计、开发制作；图片制作、各类广告设计及资源的维护和完善；</p>
+    </ol>
+    <ol id="indexRecommend4" class="indexRecommendLi">
+      <p class="indexRecommendTitle">Java工程师</p>
+      <hr class="indexRecommendHr">
+      <p class="indexRecommendBody">精通多线程和网络编程，理解java虚拟机</p>
+    </ol>
+  </ul>
+</div>
+<p id="indexExcessive">开发技术</p>
+<div id="indexExcessiveDiv">
+  <ul id="indexExcessiveDivUl">
+    <ol class="indexExcessiveDivOl">
+      <img src="images/machineLearning.jpg">
+      <p class="indexExcessiveDivP">机器学习</p>
+    </ol>
+    <ol class="indexExcessiveDivOl">
+      <img src="images/python.jpg">
+      <p class="indexExcessiveDivP">python</p>
+    </ol>
+    <ol class="indexExcessiveDivOl">
+      <img src="images/java.jpg">
+      <p class="indexExcessiveDivP">java</p>
+    </ol>
+    <ol class="indexExcessiveDivOl">
+      <img src="images/JavaScript.jpg">
+      <p class="indexExcessiveDivP">JavaScript</p>
+    </ol>
+    <ol class="indexExcessiveDivOl">
+      <img src="images/C.jpg">
+      <p class="indexExcessiveDivP">C</p>
+    </ol>
+  </ul>
+</div>
+<script src="/javascripts/echarts.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    window.onload=function () {
+        var oStatus=document.getElementsByClassName('indexTopOl1');
+        // var oStatusImg=document.getElementsByClassName('indexTopOl2');
+        var keyWordStatus=1;
+        for(var i=0;i<3;i++){
+            oStatus[i].index=i;
+            oStatus[i].onclick=function(){
+                for(j=0;j<3;j++){
+                    oStatus[j].style.background='none';
+                    oStatus[j].style.color='#FFFFFF';
+                    // oStatusImg[j].style.display='none';
+                }
+                oStatus[this.index].style.background='#FFFFFF';
+                oStatus[this.index].style.color='#0307FF';
+                keyWordStatus=Number(this.index);
+            }
+        }
+        var oBtn=document.getElementById('indexTopSearchBtn');
+        oBtn.onclick=function(){
+            var keyWord=document.getElementById('indexTopSearchInput').value;
+            axios.get('http://www.wangzhongkai.cn/keyWord',{params:{"keyWord":keyWord}})
+                .then(function (response) {
+                    console.log(response);
+                    window.location.href="http://www.wangzhongkai.cn/page";
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    }
+
+</script>
+</body>
+</html>
+
+
+
