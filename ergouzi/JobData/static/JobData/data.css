@@ -1,0 +1,39 @@
+*{
+    margin: 0px;
+    border: 0px;
+    width: 100%;
+    height:100%;
+}
+#dataTop{
+    position: absolute;
+    width: 100%;
+    height:60px;
+}
+
+.dataDiv{
+    position: absolute;
+    width:550px;
+    height:400px;
+}
+#cityList{
+     top:70px;
+     right: 0px;
+ }
+#avgSalary{
+    top:70px;
+    left: 0px;
+}
+#citySalary{
+    top:570px;
+    right: 0px;
+}
+#salaryRAnge{
+    top:570px;
+    left: 0px;
+}
+#keyWord{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    display: none;
+}

@@ -1,0 +1,99 @@
+*{
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    width: 100%;
+    background: #EEE;
+}
+#postTop{
+    position: absolute;
+    width: 100%;
+    height:60px;
+}
+#postBody{
+    position: absolute;
+    width: 80%;
+    left:10%;
+    height: 600px;
+    top: 100px;
+    background: #FFF;
+    margin-bottom: 20px;
+}
+#postBodyTitle{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+    background: #FFFFFF;
+}
+#postTopTxt{
+    position: absolute;
+    width: 90%;
+    left:5%;
+    top: 80px;
+    height: 500px;
+}
+#postBodyP{
+    position: absolute;
+    width: 94%;
+    left: 3%;
+    height: 90%;
+    top:5%;
+    font-size: 18px;
+    font-family: 楷体;
+}
+#postComment{
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    height: 200px;
+    top: 700px;;
+    background: #FFF;
+}
+#postCommentP{
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    padding: 15px;
+    background: #FFF;
+}
+#postCommentTxt{
+    position: absolute;
+    width: 96%;
+    left:2%;
+    height: 100px;
+    top: 50px;;
+    font-size: 18px;
+}
+#postCommentBtn{
+    position: absolute;
+    width: 80px;
+    right:30px;
+    height: 30px;
+    margin: 5px;
+    bottom: 3px;
+}
+#postCommentUl{
+    position: absolute;
+    width: 80%;
+    left:10%;
+    height: auto;
+    top: 900px;;
+}
+.postCommentOl{
+    width: 100%;
+    height: 50px;
+    border:solid 1px rgba(150,150,150,1);
+}
+.postCommentOlP{
+    margin: 8px;
+    width: 800px;
+}
+#keyWord{
+    position: fixed;
+    display: none;
+    bottom: 0px;
+    right: 0px;
+}

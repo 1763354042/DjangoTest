@@ -1,0 +1,134 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+html,body {
+    width: 100%;
+    height: 100%;
+}
+#PageTop{
+    top: 0px;
+    position: absolute;
+    width: 100%;
+    height:60px;
+}
+#pageTopSearch{
+    position: absolute;
+    width: 50%;
+    left: 15px;
+    height: 60px;
+    top: 65px;
+}
+#pageTopSearchInput{
+    position: absolute;
+    height:50px;
+    width: 80%;
+    left: 0px;
+    font-size: 30px;
+}
+#pageTopSearchBtn{
+    position: absolute;
+    height: 50px;
+    width: 19%;
+    right: 0px;
+    font-size: 30px;
+    color:rgba(3,7,255,1);
+}
+
+.panel {
+    width: 100%;
+    height: 100%;
+}
+
+.mim {
+    width: 70%;
+    height: 20px;
+    padding-left: 64px;
+}
+.bottom {
+    margin-top:150px;
+    width: 100%;
+}
+.left {
+    width: 48%;
+    height: 100%;
+    float: left;
+    margin-left: 44px;
+    margin-top: 12px;
+}
+.right {
+    position: absolute;
+    width: 48%;
+    height: 78%;
+    right:0px;
+    top:150px;
+}
+
+
+.left .title {
+    width: 80%;
+    height: 90px;
+    /*border: 1px solid red;*/
+    margin-left: 20px;
+    margin-top: 18px;
+}
+#pic {
+    width: 90%;
+    height: 45%;
+    margin-left: 20px;
+}
+#data {
+    width: 90%;
+    height: 45%;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+span {
+    font-size: 22px;
+    font-weight: 900;
+}
+input {
+    width: 400px;
+    height: 22px;
+    border: 1px solid gray;
+}
+.mim span {
+    font-weight: 400;
+    display: inline-block;
+    margin-right: 40px;
+    font-size: 20px;
+}
+.bottom .title {
+    font-size: 22px;
+    color: #257dc3;
+}
+.bottom .title span {
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+}
+.bottom .title p {
+    font-size: 14px;
+    color: darkgrey;
+}
+.spe {
+    color: black;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 20px;
+}
+.left .title img {
+    width: 30%;
+    display: block;
+    margin-top: 10px;
+}
+
+.right .pic {
+    height: 260px;
+}
+#keyWord{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    display: none;
+}
