@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寻找自己的职业道路</title>
+</head>
+{% load static %}
+<link href="{% static 'JobData/Recommend.css' %}" type="text/css" rel="stylesheet"/>
+<body>
+<iframe src="http://139.199.109.224:80/top" id="RecommendTop"></iframe>
+<div id="RecommendImgDiv">
+    <img src="/static/JobData/images/Recommend.png" id="RecommendImg">
+</div>
+<div id="RecommendTxt">
+    <textarea id="RecommendTextArea"></textarea>
+</div>
+<div id="RecommendData">
+    <img src="/static/JobData/images/【【1.PNG" id="RecommendDataImg" onclick="window.open('http://139.199.109.224:3000/analysis')">
+</div>
+</body>
+</html>

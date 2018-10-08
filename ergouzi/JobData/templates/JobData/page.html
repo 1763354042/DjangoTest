@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寻找自己的职业道路</title>
+{% load static %}
+<link href="{% static 'JobData/page.css' %}" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<iframe src="http://www.wangzhongkai.cn/top" id="PageTop"></iframe>
+    <div id="pageTopSearch">
+        <input id="pageTopSearchInput"/>
+        <button id="pageTopSearchBtn" value="Data">Data</button>
+    </div>
+<div class="panel">
+    <div class="bottom">
+        <div class="left">
+            <div class="title"  onclick="window.location.href='http://www.wangzhongkai.cn/post'"><%= keyWord %>
+                <span class="spe">(计算机程序设计语言)</span>
+                <p>
+                    <span>Python</span>
+                    是一种面向对象的解释型设计程序语言,由荷兰人
+                    Guido van Rossum于1998年发明,
+                    <span>Python</span>
+                    是纯粹的自由软件...
+                </p>
+            </div>
+            <div class="title" onclick="window.location.href='http://www.wangzhongkai.cn/Recommend'">技术路线缩略图
+                <div>
+                    <img src="/static/JobData/images/3.PNG">
+                </div>
+            </div>
+            <div class="title" onclick="window.location.href='http://www.wangzhongkai.cn/post'"><%= keyWord %>简析
+                <p>小平同志说:"社会主义的本质是解放生产力",而Python
+                    就是一门可以解放程序员生产力的语言.</p>
+                <p>Python简单,所以学起来快,有经验的程序员一周见
+                    上手Python.Python强大,python能做的事情从web开发, 科学计算,机器学习...</p>
+            </div>
+            <div class="title" onclick="window.location.href='http://www.wangzhongkai.cn/data'">统计数据</div>
+        </div>
+        <div class="right">
+            <div id="pic" onclick="window.location.href='http://www.wangzhongkai.cn/analysis'">                                      <!--薪酬阶梯分布图-->
+            </div>
+            <div id="data">                                  <!--薪酬城市分布-->
+            </div>
+        </div>
+        <p id="keyWord"><%= keyWord %></p>
+    </div>
+    <script src="/javascripts/echarts.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        window.onload=function() {
+            var cityArr=new Array(10);
+            var citySalaryArr=new Array(10);
+            var keyWord = (document.getElementById('keyWord').innerText).toString();                  //获取页面存储的关键字
+            var myChart = echarts.init(document.getElementById('pic'));
+            var cityChart = echarts.init(document.getElementById('data'));
+            var salaryNum=[0,0,0,0,0,0];
+            var oBtn=document.getElementById('pageTopSearchBtn');
+            oBtn.onclick=function(){
+                var keyWord=document.getElementById('pageTopSearchInput').value;
+                axios.get('http://www.wangzhongkai.cn/keyWord',{params:{"keyWord":keyWord}})
+                    .then(function (response) {
+                        console.log(response);
+                        window.location.href="http://www.wangzhongkai.cn/page";
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+            axios.get('http://www.wangzhongkai.cn/pageAx', {params: {"keyWord": keyWord}})
+                .then(function (response) {
+                    for(i=0;i<6;i++){
+                        salaryNum[i]=response.data[i].num;
+                        salaryNum[i]= parseFloat(salaryNum[i]);
+                    }
+                    option1 = {
+                        title : {
+                            text: keyWord+'薪酬分布',
+                            subtext: '样本统计',
+                            x:'center'
+                        },
+                        tooltip : {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b} : {c} ({d}%)"
+                        },
+                        legend: {
+                            orient: 'vertical',
+                            left: 'left',
+                            data: ['<5K','5-7k','7-9K','9-11K','11-15k','>15k']
+                        },
+                        series : [
+                            {
+                                name: '薪酬区间',
+                                type: 'pie',
+                                radius : '55%',
+                                center: ['50%', '60%'],
+                                data:[
+                                    {value:salaryNum[0], name:'<5K'},
+                                    {value:salaryNum[1], name:'5-7K'},
+                                    {value:salaryNum[2], name:'7-9K'},
+                                    {value:salaryNum[3], name:'9-11K'},
+                                    {value:salaryNum[4], name:'11-15K'},
+                                    {value:salaryNum[5], name:'>15k'}
+                                ],
+                                itemStyle: {
+                                    emphasis: {
+                                        shadowBlur: 10,
+                                        shadowOffsetX: 0,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                    }
+                                }
+                            }
+                        ]
+                    };
+                    myChart.setOption(option1);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            axios.get('http://www.wangzhongkai.cn/pageAx2', {params: {"keyWord": keyWord}})
+                .then(function (response) {
+                    for(i=0;i<10;i++){
+                        cityArr[i]=city=response.data[i].city;
+                        citySalaryArr[i]=parseFloat(response.data[i].salary);
+                    }
+                    cityOption={
+                        title: {
+                            text: keyWord+'平均工资前十的城市',
+                            subtext: '数据来自网络'
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+                        legend: {
+                            data: keyWord
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis: {
+                            type: 'value',
+                            boundaryGap: [0, 0.01]
+                        },
+                        yAxis: {
+                            type: 'category',
+                            data: cityArr
+                        },
+                        series:
+                            {
+                                name: keyWord,
+                                type: 'bar',
+                                data: citySalaryArr
+                            }
+
+                    }
+                    cityChart.setOption(cityOption);
+                })
+        }
+    </script>
+</div>
+</body>
+</html>
