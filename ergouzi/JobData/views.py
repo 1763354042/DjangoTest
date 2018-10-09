@@ -14,6 +14,8 @@ def data(request):
     return render(request,'JobData/data.html')
 
 def page(request):
+    keyWord = request.GET.get('keyWord')
+    print(keyWord)
     return render(request,'JobData/page.html')
 
 def post(request):

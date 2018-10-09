@@ -79,7 +79,8 @@
     </ol>
   </ul>
 </div>
-<script src="/javascripts/echarts.min.js"></script>
+<p id="keyWord"><%= keyWord %></p>
+<script src="/static/JobData/javascripts/echarts.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     window.onload=function () {
@@ -102,14 +103,18 @@
         var oBtn=document.getElementById('indexTopSearchBtn');
         oBtn.onclick=function(){
             var keyWord=document.getElementById('indexTopSearchInput').value;
-            axios.get('http://www.wangzhongkai.cn/keyWord',{params:{"keyWord":keyWord}})
+            axios.get('http://127.0.0.1:8000/JobData/page',{params:{"keyWord":keyWord}})
                 .then(function (response) {
                     console.log(response);
-                    window.location.href="http://www.wangzhongkai.cn/page";
+                    alert('123');
+                    <!--window.location.href="http://www.wangzhongkai.cn/page";-->
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    <!--console.log(error);-->
+                    alert(error);
                 });
+
+                <!--window.location.href="http://127.0.0.0:8000/page";-->
         }
     }
 
