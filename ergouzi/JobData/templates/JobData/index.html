@@ -103,18 +103,17 @@
         var oBtn=document.getElementById('indexTopSearchBtn');
         oBtn.onclick=function(){
             var keyWord=document.getElementById('indexTopSearchInput').value;
-            axios.get('http://127.0.0.1:8000/JobData/page',{params:{"keyWord":keyWord}})
-                .then(function (response) {
-                    console.log(response);
-                    alert('123');
-                    <!--window.location.href="http://www.wangzhongkai.cn/page";-->
-                })
-                .catch(function (error) {
-                    <!--console.log(error);-->
-                    alert(error);
-                });
-
-                <!--window.location.href="http://127.0.0.0:8000/page";-->
+            <!--axios.get('http://127.0.0.1:8000/JobData/page',{params:{"keyWord":keyWord}})-->
+                <!--.then(function (response) {-->
+                    <!--console.log(response);-->
+                    <!--alert('123');-->
+                    <!--&lt;!&ndash;window.location.href="http://www.wangzhongkai.cn/page";&ndash;&gt;-->
+                <!--})-->
+                <!--.catch(function (error) {-->
+                    <!--&lt;!&ndash;console.log(error);&ndash;&gt;-->
+                    <!--alert(error);-->
+                <!--});-->
+                window.location.href="http://127.0.0.1:8000/JobData/page?keyWord="+keyWord;
         }
     }
 

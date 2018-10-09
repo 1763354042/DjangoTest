@@ -15,7 +15,7 @@
 <div class="panel">
     <div class="bottom">
         <div class="left">
-            <div class="title"  onclick="window.location.href='http://www.wangzhongkai.cn/post'"><%= keyWord %>
+            <div class="title"  onclick="window.location.href='http://www.wangzhongkai.cn/post'">{{ keyWord }}
                 <span class="spe">(计算机程序设计语言)</span>
                 <p>
                     <span>Python</span>
@@ -30,7 +30,7 @@
                     <img src="/static/JobData/images/3.PNG">
                 </div>
             </div>
-            <div class="title" onclick="window.location.href='http://www.wangzhongkai.cn/post'"><%= keyWord %>简析
+            <div class="title" onclick="window.location.href='http://www.wangzhongkai.cn/post'">{{ keyWord }}简析
                 <p>小平同志说:"社会主义的本质是解放生产力",而Python
                     就是一门可以解放程序员生产力的语言.</p>
                 <p>Python简单,所以学起来快,有经验的程序员一周见
@@ -44,7 +44,6 @@
             <div id="data">                                  <!--薪酬城市分布-->
             </div>
         </div>
-        <p id="keyWord"><%= keyWord %></p>
     </div>
     <script src="/javascripts/echarts.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
