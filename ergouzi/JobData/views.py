@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Salaryrange
 from django.http import HttpResponse
 # Create your views here.
 def index(request):
@@ -15,7 +16,13 @@ def data(request):
 
 def page(request):
     keyWord = request.GET.get('keyWord')
-    return render(request,'JobData/page.html',{'keyWord':keyWord})
+    list = Salaryrange.objects.get(keyword='java')
+    print(list)
+    contex = {
+        # "list":list,
+        "keyWord":keyWord
+    }
+    return render(request,'JobData/page.html',{contex})
 
 def post(request):
     return render(request,'JobData/post.html')
