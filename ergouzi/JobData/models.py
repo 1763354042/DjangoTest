@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Article(models.Model):
-    articleid = models.IntegerField(db_column='articleId', primary_key=True)  # Field name made lowercase.
+    articleid = models.IntegerField(db_column='articleId')  # Field name made lowercase.
     ariticleaddress = models.CharField(db_column='ariticleAddress', max_length=255)  # Field name made lowercase.
     keyword = models.CharField(db_column='keyWord', max_length=255)  # Field name made lowercase.
     mainbody = models.TextField()
