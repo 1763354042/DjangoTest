@@ -15,12 +15,15 @@ def data(request):
     return render(request,'JobData/data.html')
 
 def page(request):
-    keyWord = request.GET.get('keyWord')
-    list = Salaryrange.objects.get(keyword='java')
-    print(list)
+    keyword = request.GET.get('keyWord')
+    list = Salaryrange.objects.get(id = 1)
+    for key in list:
+        print(key)
+
+
     contex = {
-        # "list":list,
-        "keyWord":keyWord
+        # "list":list[0],
+        "keyWord":keyword
     }
     return render(request,'JobData/page.html',{contex})
 

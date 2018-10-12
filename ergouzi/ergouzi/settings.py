@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'ergouzi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'datapeer',    ## 数据库名称
+        'NAME': 'data',    ## 数据库名称
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
