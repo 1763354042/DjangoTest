@@ -13,7 +13,7 @@
 <div id="citySalary" class="dataDiv"></div>
 <div id="salaryRAnge" class="dataDiv"></div>
 <p id="keyWord"><%=keyWord %></p>
-<script src="/javascripts/echarts.min.js"></script>
+<script src="/static/JobData/javascripts/echarts.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     window.onload=function() {
@@ -22,13 +22,13 @@
         var cityListArr=new Array(10);
         var cityListValueArr=new Array(10);
         var avgSalaryArr=new Array(10);
-        var keyWord = (document.getElementById('keyWord').innerText).toString();                  //获取页面存储的关键字
+        <!--var keyWord = (document.getElementById('keyWord').innerText).toString();                  //获取页面存储的关键字-->
         var salaryRAngeChart = echarts.init(document.getElementById('salaryRAnge'));
         var citySalaryChart = echarts.init(document.getElementById('citySalary'));
         var cityListChart = echarts.init(document.getElementById('cityList'));
         var avgSalaryChart = echarts.init(document.getElementById('avgSalary'));
         var salaryNum=[0,0,0,0,0,0];
-        axios.get('http://www.wangzhongkai.cn/pageAx', {params: {"keyWord": keyWord}})
+        axios.get('http://127.0.0.1:8000/JobData/get_salary_range')
             .then(function (response) {
                 for(i=0;i<6;i++){
                     salaryNum[i]=response.data[i].num;
@@ -36,7 +36,7 @@
                 }
                 option1 = {
                     title : {
-                        text: keyWord+'薪酬分布',
+                        text: response.data[0].keyWord+'薪酬分布',
                         subtext: '样本统计',
                         x:'center'
                     },
@@ -82,7 +82,7 @@
             .catch(function (error) {
                 console.log(error);
             });
-        axios.get('http://www.wangzhongkai.cn/pageAx2', {params: {"keyWord": keyWord}})
+        axios.get('http://127.0.0.1:8000/JobData/get_city_salary')
             .then(function (response) {
                 for(i=0;i<10;i++){
                     cityArr[i]=city=response.data[i].city;
@@ -90,7 +90,7 @@
                 }
                 cityOption={
                     title: {
-                        text: keyWord+'平均工资前十的城市',
+                        text: response.data[0].keyWord+'平均工资前十的城市',
                         subtext: '数据来自网络'
                     },
                     tooltip: {
@@ -104,7 +104,7 @@
                         extraCssText:'width:160px;height:40px;background:rgba(0,0,0,0.3);'
                     },
                     legend: {
-                        data: keyWord
+                        data: response.data[0].keyWord
                     },
                     grid: {
                         left: '3%',
@@ -130,15 +130,15 @@
                 }
                 citySalaryChart.setOption(cityOption);
             })
-        axios.get('http://www.wangzhongkai.cn/cityList', {params: {"keyWord": keyWord}})
+        axios.get('http://127.0.0.1:8000/JobData/get_city_list')
             .then(function (response) {
-                for(i=0;i<11;i++){
+                for(i=0;i<10;i++){
                     cityListArr[i]=city=response.data[i].city;
                     cityListValueArr[i]=parseFloat(response.data[i].value);
                 }
                 cityListOption={
                     title: {
-                        text: keyWord+'招聘数量',
+                        text: response.data[0].keyWord+'招聘数量',
                         subtext: '数据来自网络'
                     },
                     tooltip: {
@@ -178,7 +178,7 @@
                 }
                 cityListChart.setOption(cityListOption);
             })
-        axios.get('http://www.wangzhongkai.cn/avgSalary', {params: {"keyWord": keyWord}})
+        axios.get('http://127.0.0.1:8000/JobData/get_avg_salary')
             .then(function (response) {
                 for(i=0;i<6;i++) {
                     avgSalaryArr[i] = parseFloat(response.data[i].avgSalary);
